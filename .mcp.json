@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "venera-guide": {
+      "command": "node",
+      "args": [
+        "mcp-server.mjs"
+      ]
+    }
+  }
+}

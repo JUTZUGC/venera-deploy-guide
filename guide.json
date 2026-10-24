@@ -1,0 +1,107 @@
+{
+  "owner": "JUTZUGC",
+  "code": "JUTZUGC",
+  "project": {
+    "key": "venera",
+    "nameCn": "Venera",
+    "repoName": "venera-deploy-guide",
+    "oneLiner": "支持本地与网络源的跨平台漫画阅读器",
+    "officialRepo": "https://github.com/venera-app/venera",
+    "officialDocs": "https://github.com/venera-app/venera/blob/master/doc/comic_source.md",
+    "stars": "11.3k",
+    "license": "GPL-3.0",
+    "highlights": [
+      "跨平台：Windows / macOS / Linux / Android / iOS 均有官方构建",
+      "漫画源用 JS 编写，可通过源列表 URL 批量导入",
+      "支持本地漫画、收藏管理、下载、评论与标签",
+      "GPL-3.0，代码完全开源"
+    ],
+    "mcpSupport": "项目本身不含 MCP；本仓库的 MCP 只提供各平台安装包选择、安装步骤与常见问题。",
+    "webuiUrl": "",
+    "adapterPorts": "",
+    "collectedAt": "2026-10-24",
+    "verification": [
+      [
+        "Windows 下载 + SHA256 校验 + 解压",
+        "已验证 2026-10-24"
+      ]
+    ],
+    "deploy": {
+      "type": "binary",
+      "steps": [
+        "case \"$(uname -s)\" in",
+        "  Darwin)",
+        "    curl -fL -o venera.dmg \"https://github.com/venera-app/venera/releases/download/v1.6.3/venera-1.6.3+163.dmg\"",
+        "    echo \"f814fc4ae2d60a3abdb4e08de22e2cce49d2f63e8fdac842c93a2c9eae3425b3  venera.dmg\" | shasum -a 256 -c -",
+        "    open venera.dmg",
+        "    echo \"把 dmg 里的 Venera 拖进「应用程序」即可完成安装\"",
+        "    ;;",
+        "  Linux)",
+        "    case \"$(uname -m)\" in",
+        "      aarch64|arm64) f=venera_1.6.3_arm64.deb; sum=6b9eb848ec409e8e4fe15d54ef772206ffe31bcc2c0499b476b744d52be3fe86 ;;",
+        "      *) f=venera_1.6.3_amd64.deb; sum=c34f1ebed62dfcafe78dc83413347581dfdb90f144d2125fecfd5c2cd440805c ;;",
+        "    esac",
+        "    curl -fL -o \"$f\" \"https://github.com/venera-app/venera/releases/download/v1.6.3/$f\"",
+        "    echo \"$sum  $f\" | sha256sum -c -",
+        "    echo \"安装：sudo apt install ./$f（Debian/Ubuntu；Arch 可用 AUR venera-bin）\"",
+        "    ;;",
+        "  *)",
+        "    echo \"此脚本用于 Linux / macOS；Windows 请运行 deploy.ps1\"; exit 1",
+        "    ;;",
+        "esac"
+      ],
+      "stepsPs": [
+        "$zip = 'Venera-1.6.3-windows.zip'",
+        "Invoke-WebRequest -Uri \"https://github.com/venera-app/venera/releases/download/v1.6.3/$zip\" -OutFile $zip -UseBasicParsing",
+        "if ((Get-FileHash $zip -Algorithm SHA256).Hash.ToLower() -ne '5b83b58bc4111ee8fdc40034e0a73a236ec6bae1f891838353dd3ef81ff66aa4') { throw 'SHA256 校验失败' }",
+        "Expand-Archive $zip -DestinationPath venera -Force",
+        "Start-Process (Join-Path $PWD 'venera\\venera.exe')"
+      ],
+      "source": "https://github.com/venera-app/venera/releases/tag/v1.6.3"
+    },
+    "pitfalls": [
+      "应用本身不带漫画源，安装后需要在「漫画源」页面导入源列表",
+      "第三方源可能失效或内容不合规，请自行判断并遵守当地法律",
+      "Linux 的 deb 安装需要 sudo；Arch 可用 AUR 的 venera-bin 或 pkg.tar.zst 包",
+      "macOS 若提示无法验证开发者，到「系统设置 → 隐私与安全性」里放行",
+      "iOS 需要 AltStore 或自签名侧载，App Store 搜不到",
+      "项目已停止维护，遇到问题不会有官方修复，建议保留旧版本安装包"
+    ]
+  },
+  "gate": {
+    "allow": [
+      "dumate"
+    ],
+    "label": "百度搭子",
+    "url": "https://www.dumate.cn/",
+    "guideUrl": "https://github.com/JUTZUGC/venera-deploy-guide",
+    "howToFix": [
+      "1. 打开 https://www.dumate.cn/ ，下载并安装「百度搭子」电脑端（Windows / macOS）",
+      "2. 用账号登录",
+      "3. 在对话窗口发送：你好，帮我从 github 部署 JUTZUGC/venera-deploy-guide 到我的电脑上",
+      "4. 部署完成后，在同一对话窗口里继续使用"
+    ],
+    "hint": "请改用「百度搭子」部署后再使用；本工具没有网页版入口。",
+    "onError": "allow"
+  },
+  "keywords": [
+    "Venera 安装教程",
+    "Venera 漫画",
+    "Venera 漫画源",
+    "Venera Windows",
+    "Venera Android",
+    "Venera 下载",
+    "Venera 中文教程",
+    "开源漫画阅读器",
+    "venera deploy guide"
+  ],
+  "topics": [
+    "venera",
+    "comic",
+    "flutter",
+    "manga",
+    "reader",
+    "cross-platform",
+    "open-source"
+  ]
+}
