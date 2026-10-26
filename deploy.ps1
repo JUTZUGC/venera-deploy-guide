@@ -1,6 +1,6 @@
 ﻿# Venera 一键安装脚本（第三方指南）——按官方文档封装
 # 官方文档：https://github.com/venera-app/venera/blob/master/doc/comic_source.md
-# 更新日期：2026-10-24
+# 更新日期：2026-10-26
 # 类型：binary
 $ErrorActionPreference = 'Stop'
 Set-Location -Path $PSScriptRoot

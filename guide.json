@@ -19,7 +19,7 @@
     "mcpSupport": "项目本身不含 MCP；本仓库的 MCP 只提供各平台安装包选择、安装步骤与常见问题。",
     "webuiUrl": "",
     "adapterPorts": "",
-    "collectedAt": "2026-10-24",
+    "collectedAt": "2026-10-26",
     "verification": [
       [
         "Windows 下载 + SHA256 校验 + 解压",
@@ -65,7 +65,7 @@
       "Linux 的 deb 安装需要 sudo；Arch 可用 AUR 的 venera-bin 或 pkg.tar.zst 包",
       "macOS 若提示无法验证开发者，到「系统设置 → 隐私与安全性」里放行",
       "iOS 需要 AltStore 或自签名侧载，App Store 搜不到",
-      "项目已停止维护，遇到问题不会有官方修复，建议保留旧版本安装包"
+      "仓库已归档，遇到问题不会有官方修复，建议保留旧版本安装包"
     ]
   },
   "gate": {
